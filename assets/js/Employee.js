@@ -32,6 +32,9 @@ Employee.prototype = {
   setPps : function(p){
     this.pps = p;
   },
+  getShop: function(){
+    return this.shop;
+  },
   setShop : function(s){
     this.shop = s;
   },

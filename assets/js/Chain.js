@@ -15,8 +15,8 @@ Chain.prototype = {
       if(this.shops[i].getId() == id){
         return this.shops[i];
       }
-      return null;
     };
+    return null;
   },
   removeShop : function(s){
     var index = this.shops.indexOf(s);
@@ -30,13 +30,13 @@ Chain.prototype = {
   getEmployees : function(){
     return this.employees;
   },
-  getEmployeeById : function(id){
+  getEmployeeById : function(empId){
     for (var i = 0; i < this.employees.length; i++) {
-      if(this.employees[i].getId() == id){
+      if(this.employees[i].getId() == empId){
         return this.employees[i];
       }
-      return null;
     };
+    return null;
   },
   removeEmployee : function(emp){
     var index = this.employees.indexOf(emp);
@@ -52,16 +52,15 @@ Chain.prototype = {
 
     //populate the employees array With Employee objects
     this.addEmployee(new Employee(1,"Pete",10,"1234567FA",1));
-    this.addEmployee(new Employee(2,"Barry",20,"6612629FA",1));
-    this.addEmployee(new Employee(3,"John",13,"1357567GA",2));
+    this.addEmployee(new Employee(2,"Barry",20,"6612629FA",2));
+    this.addEmployee(new Employee(3,"John",13,"1357567GA",3));
 
     for (var i = 0; i < this.employees.length; i++) {
       var emp = this.employees[i];
       var sh = this.getShopById(emp.getShopId());
+
       emp.setShop(sh);
       sh.addEmployee(emp);
-      console.log(sh);
-      // var sh = this.getShopById();
     };
 
   }

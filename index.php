@@ -10,5 +10,11 @@
   <script type="text/javascript" src="assets/js/Employee.js"></script>
   <script type="text/javascript" src="assets/js/Chain.js"></script>
 
+  <script>
+  var t = new Chain();
+
+  t.populate();
+  </script>
+
 </body>
 </html>

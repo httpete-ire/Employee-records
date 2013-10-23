@@ -1,7 +1,7 @@
 //constructor function
 
-function Shop(id, n, l, t) {
-  this.id = id;
+function Shop(i, n, l, t) {
+  this.id = i;
   this.name = n;
   this.location = l;
   this.employees = new Array();
