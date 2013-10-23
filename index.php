@@ -8,6 +8,7 @@
 
   <script type="text/javascript" src="assets/js/Shop.js"></script>
   <script type="text/javascript" src="assets/js/Employee.js"></script>
+  <script type="text/javascript" src="assets/js/Chain.js"></script>
 
 </body>
 </html>

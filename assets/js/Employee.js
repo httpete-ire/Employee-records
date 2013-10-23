@@ -1,37 +1,44 @@
-function Employee(id,n,w,p) {
-  this.id = id;
+function Employee(i,n,w,p,sid) {
+  this.id = i;
   this.name = n;
   this.wage = w;
   this.pps = p;
+  this.shopId = sid;
   this.shop = null;
 }
 
 Employee.prototype = {
-  getId : function() {
+  getId : function(){
     return this.id;
   },
-  setId : function(id) {
-    this.id= id;
+  setId : function(i){
+    this.id= i;
   },
-  getName : function() {
+  getName : function(){
     return this.name;
   },
-  setName : function(n) {
+  setName : function(n){
     this.name = n;
   },
-  getWage : function() {
+  getWage : function(){
     return this.wage;
   },
-  setWage : function(w) {
+  setWage : function(w){
     this.wage = w;
   },
-  getPps : function() {
+  getPps : function(){
     return this.pps;
   },
-  setPps : function(p) {
+  setPps : function(p){
     this.pps = p;
   },
-  setShop : function(s) {
+  setShop : function(s){
     this.shop = s;
+  },
+  getShopId: function(){
+    return this.shopId;
+  },
+  setShopId : function(s){
+    this.shopId = s;
   }
 }
