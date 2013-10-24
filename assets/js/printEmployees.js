@@ -1,37 +1,42 @@
 
 //function to run when window loads
 function onPageLoad(){
-  var chain, employeeTable, employee;
+  var chain, employeeTable, employee, direction, currentSortColumn;
 
-  function onEmployeeFormSubmit(event){
-    //get form
-    var form = event.target;
+      function onEmployeeFormSubmit(event){
+        //get form
+        var form = event.target;
 
-    //get values
-    var empId = form.elements['employeeId'].value;
-    var empName = form.elements['employeeName'].value;
-    var empWage = form.elements['employeeWage'].value;
-    var empPPS = form.elements['employeePPS'].value;
-    var empShopId = form.elements['employeeShop'].value;
+        //get values
+        var empId = form.elements['employeeId'].value;
+        var empName = form.elements['employeeName'].value;
+        var empWage = form.elements['employeeWage'].value;
+        var empPPS = form.elements['employeePPS'].value;
+        var empShopId = form.elements['employeeShop'].value;
 
-    var emp = new Employee(empId,empName,empWage,empPPS,empShopId);
-    var empShop = chain.getShopById(empShopId);
+        var emp = new Employee(empId,empName,empWage,empPPS,empShopId);
+        var empShop = chain.getShopById(empShopId);
 
-    //refrenece the shop bject in employee
-    emp.setShop(empShop);
-    empShop.addEmployee(emp);
+        //refrenece the shop bject in employee
+        emp.setShop(empShop);
+        empShop.addEmployee(emp);
 
-    var row = makeEmployeeTableRow(emp);
+        var row = makeEmployeeTableRow(emp);
 
-    employeeTable.appendChild(row);
+        employeeTable.appendChild(row);
 
-    event.preventDefault();
+        event.preventDefault();
 
-    //reset form inputs
-    form.reset();
+        //reset form inputs
+        form.reset();
 
-    console.log(emp);
+        console.log(emp);
 
+      }
+
+  function sortEmplyeesById(event){
+    currentSortColumn = 0;
+    sortTableByColumn(employeeTable, currentSortColumn, direction);
   }
 
   chain = new Chain(); //store all the data
