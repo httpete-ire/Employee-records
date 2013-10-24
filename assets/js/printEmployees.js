@@ -3,6 +3,37 @@
 function onPageLoad(){
   var chain, employeeTable, employee;
 
+  function onEmployeeFormSubmit(event){
+    //get form
+    var form = event.target;
+
+    //get values
+    var empId = form.elements['employeeId'].value;
+    var empName = form.elements['employeeName'].value;
+    var empWage = form.elements['employeeWage'].value;
+    var empPPS = form.elements['employeePPS'].value;
+    var empShopId = form.elements['employeeShop'].value;
+
+    var emp = new Employee(empId,empName,empWage,empPPS,empShopId);
+    var empShop = chain.getShopById(empShopId);
+
+    //refrenece the shop bject in employee
+    emp.setShop(empShop);
+    empShop.addEmployee(emp);
+
+    var row = makeEmployeeTableRow(emp);
+
+    employeeTable.appendChild(row);
+
+    event.preventDefault();
+
+    //reset form inputs
+    form.reset();
+
+    console.log(emp);
+
+  }
+
   chain = new Chain(); //store all the data
   chain.populate();
 
@@ -11,6 +42,10 @@ function onPageLoad(){
   employee = chain.getEmployees();
 
   displayEmployees(employee, employeeTable);
+
+  var employeeForm = document.employeeForm;
+
+  employeeForm.addEventListener('submit', onEmployeeFormSubmit, false);
 
 }
 
@@ -89,3 +124,4 @@ function makeSlug(val){
 */
 
 window.addEventListener('load', onPageLoad ,false);
+

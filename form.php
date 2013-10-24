@@ -9,7 +9,7 @@
 
   <div class="container">
 
-  <h1>Store Employee Database</h1>
+  <h1>Enter Employee Details</h1>
 
   <form method="POST" id="employeeForm" name="employeeForm">
 
@@ -34,13 +34,15 @@
     </div>
 
     <div class="form-group">
-      <label for="employeeShop">Shop name</label>
+      <label for="employeeShop">Shop ID</label>
       <input type="text" class="form-control" id="employeeShop" name="employeeShop" />
     </div>
 
     <input type="submit" value="Add" name="addEmployee" class="btn btn-default" />
 
   </form>
+
+  <h2>Employee Database</h2>
 
   <table class="table">
     <thead>
