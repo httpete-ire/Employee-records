@@ -30,13 +30,13 @@ function onPageLoad(){
         //reset form inputs
         form.reset();
 
-        console.log(emp);
+        console.log(employeeTable.rows[3].childNodes[0].firstChild.data);
 
       }
 
-  function sortEmplyeesById(event){
+  function sortEmployeesById(event){
     currentSortColumn = 0;
-    sortTableByColumn(employeeTable, currentSortColumn, direction);
+    sortTableByCol(employeeTable, currentSortColumn, direction);
   }
 
   chain = new Chain(); //store all the data
@@ -52,8 +52,16 @@ function onPageLoad(){
 
   employeeForm.addEventListener('submit', onEmployeeFormSubmit, false);
 
+
   //fill select menu with shops
   populateShopSelect(chain);
+
+  direction = [0, 0, 0, 0, 0];
+  currentSortColumn = 0;
+
+  var idColLabel = document.getElementById("empID");
+
+  idColLabel.addEventListener("click", sortEmployeesById, false);
 
 }
 
@@ -135,6 +143,38 @@ function populateShopSelect(c){
     var o = new Option(shops[i].getName(),shops[i].getId());
     s.appendChild(o);
   };
+}
+
+function sortTableByCol(tableBody, colIndex, direction) {
+
+  function tableRowCompare(a, b) {
+    var aData = a.childNodes[colIndex].firstChild.data;
+    var bData = b.childNodes[colIndex].firstChild.data;
+
+    if(aData < bData) {
+      if(direction[colIndex] === 0) return -1;
+        else return 1;
+    }
+    else if (aData > bData) {
+      if(direction[colIndex] === 0) return 1;
+        else return -1;
+    }
+    else return 0;
+  }
+
+  var rows = new Array();
+  for(var i = 0; i < tableBody.rows.length; i++) {
+    rows[i] = tableBody.rows[i];
+  }
+
+  rows.sort(tableRowCompare);
+
+  for(var i = 0; i < tableBody.rows.length; i++) {
+    tableBody.appendChild(rows[i]);
+  }
+
+  direction[columnIndex] = (direction[columnIndex] + 1) % 2;
+
 }
 
 /*
