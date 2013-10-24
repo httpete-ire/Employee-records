@@ -35,7 +35,11 @@
 
     <div class="form-group">
       <label for="employeeShop">Shop ID</label>
-      <input type="text" class="form-control" id="employeeShop" name="employeeShop" />
+      <p>
+        <select  id="employeeShopSelect" name="employeeShop">
+          <option value="default">Please select a shop</option>
+        </select>
+      </p>
     </div>
 
     <input type="submit" value="Add" name="addEmployee" class="btn btn-default" />

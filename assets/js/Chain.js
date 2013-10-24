@@ -49,6 +49,7 @@ Chain.prototype = {
     this.addShop(new Shop(1,"Spar","Sandycove",20000));
     this.addShop(new Shop(2,"Centra","Dun Laoghaire",40000));
     this.addShop(new Shop(3, "Dunnes","Cornelscourt",100000));
+    this.addShop(new Shop(4, "Londis","Deansgrange", 30000));
 
     //populate the employees array With Employee objects
     this.addEmployee(new Employee(1,"Pete",10,"1234567FA",1));

@@ -47,6 +47,9 @@ function onPageLoad(){
 
   employeeForm.addEventListener('submit', onEmployeeFormSubmit, false);
 
+  //fill select menu with shops
+  populateShopSelect(chain);
+
 }
 
 function displayEmployees(emp, tableBody){
@@ -57,7 +60,7 @@ function displayEmployees(emp, tableBody){
   };
 }
 
-
+//creates table
 function makeEmployeeTableRow(emp){
   var tableRow, cell, textNode;
 
@@ -117,6 +120,16 @@ function  createText(txt){
 
 function makeSlug(val){
   return val.toLowerCase().replace(/-+/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g,'');
+}
+
+//function to populate shop select with shop id and shop name
+function populateShopSelect(c){
+  var s = document.getElementById('employeeShopSelect');
+  var shops = c.getShops();
+  for (var i = 0; i < shops.length; i++) {
+    var o = new Option(shops[i].getName(),shops[i].getId());
+    s.appendChild(o);
+  };
 }
 
 /*
