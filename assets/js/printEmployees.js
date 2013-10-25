@@ -37,6 +37,7 @@ function onPageLoad(){
   function sortEmployeesById(event){
     currentSortColumn = 0;
     sortTableByCol(employeeTable, currentSortColumn, direction);
+    event.preventDefault();
   }
 
   chain = new Chain(); //store all the data
@@ -173,7 +174,7 @@ function sortTableByCol(tableBody, colIndex, direction) {
     tableBody.appendChild(rows[i]);
   }
 
-  direction[columnIndex] = (direction[columnIndex] + 1) % 2;
+  direction[colIndex] = (direction[colIndex] + 1) % 2;
 
 }
 
