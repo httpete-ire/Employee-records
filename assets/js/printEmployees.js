@@ -29,9 +29,6 @@ function onPageLoad(){
 
     //reset form inputs
     form.reset();
-
-    console.log(emp);
-
   }
 
   chain = new Chain(); //store all the data
