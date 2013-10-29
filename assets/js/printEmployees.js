@@ -264,7 +264,6 @@ function showAllShops(tableBody){
   for (i = 0; i < tableBody.rows.length; i++) {
     row = tableBody.rows[i];
     classList = row.className;
-    console.log(classList);
 
     if (classList.indexOf('show-row') === -1) {
       row.className = classList.replace('hide-row', 'show-row');
