@@ -1,5 +1,5 @@
 function Chain() {
-  this.shops = new Array();
+  this.shops     = new Array();
   this.employees = new Array();
 }
 
@@ -52,9 +52,10 @@ Chain.prototype = {
     this.addShop(new Shop(4, "Londis","Deansgrange", 30000));
 
     //populate the employees array With Employee objects
-    this.addEmployee(new Employee(10,"Pete",10,"1234567FA",1));
-    this.addEmployee(new Employee(2,"Barry",20,"6612629FA",2));
-    this.addEmployee(new Employee(1,"John",13,"1357567GA",3));
+    this.addEmployee(new Employee(3,"Pete",10,"1234567FA",1));
+    this.addEmployee(new Employee(20,"Barry",20,"6612629FA",2));
+    this.addEmployee(new Employee(11,"John",13,"1357567GA",3));
+    this.addEmployee(new Employee(1,"Dec",20,"3321412BA",4))
 
     for (var i = 0; i < this.employees.length; i++) {
       var emp = this.employees[i];

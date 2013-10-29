@@ -52,10 +52,10 @@
     <thead>
       <tr>
         <th><a href="#" id="empID">Employee Id</a></th>
-        <th><a href="#">Name</a></th>
-        <th><a href="#">Wage</a></th>
-        <th><a href="#">PPS</a></th>
-        <th><a href="#">Shop</a></th>
+        <th><a href="#" id="empName">Name</a></th>
+        <th><a href="#" id="empWage">Wage</a></th>
+        <th><a href="#" id="empPPS">PPS</a></th>
+        <th><a href="#" id="empShop">Shop</a></th>
       </tr>
     </thead>
 
