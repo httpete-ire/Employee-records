@@ -1,10 +1,10 @@
 function Employee(i,n,w,p,sid) {
-  this.id = i;
-  this.name = n;
-  this.wage = w;
-  this.pps = p;
+  this.id     = i;
+  this.name   = n;
+  this.wage   = w;
+  this.pps    = p;
   this.shopId = sid;
-  this.shop = null;
+  this.shop   = null;
 }
 
 Employee.prototype = {
