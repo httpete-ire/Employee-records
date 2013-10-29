@@ -61,6 +61,7 @@ function onPageLoad(){
   function sortEmployeesByPPS(event){
     currentSortColumn = 3;
     sortTableByCol(employeeTable, currentSortColumn, direction, false);
+    event.preventDefault();
   }
 
   chain = new Chain(); //store all the data
@@ -190,6 +191,7 @@ function sortTableByCol(tableBody, colIndex, direction, isNumber) {
   function tableRowCompare(a, b) {
     var aData = a.childNodes[colIndex].firstChild.data;
     var bData = b.childNodes[colIndex].firstChild.data;
+
 
     if(isNumber) {
       aData = Number(aData);
