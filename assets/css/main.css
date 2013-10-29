@@ -3,6 +3,23 @@
   margin: 0 auto;
 }
 
+#shopFilter {
+  float: left;
+  margin: 23px 0 0 20px;
+}
+
+.dataTitle {
+  float: left;
+
+}
+
+tr.show-row {
+    display: table-row;
+}
+
+tr.hide-row {
+    display: none;
+}
 /*!
  * Bootstrap v3.0.0
  *
@@ -1244,5 +1261,4 @@ input[type="button"].btn-block {
 
 #employeeForm {
   margin-bottom: 100px;
->>>>>>> form
 }

@@ -37,7 +37,7 @@
       <label for="employeeShop">Shop ID</label>
       <p>
         <select  id="employeeShopSelect" name="employeeShop">
-          <option value="default">Please select a shop</option>
+          <option value="0">Please select a shop</option>
         </select>
       </p>
     </div>
@@ -46,7 +46,11 @@
 
   </form>
 
-  <h2>Employee Database</h2>
+  <h2 class="dataTitle">Employee Database</h2>
+
+  <select  id="shopFilter">
+    <option value="0">Filter by shop</option>
+  </select>
 
   <table class="table">
     <thead>

@@ -32,6 +32,7 @@ function onPageLoad(){
 
   }
 
+
   function sortEmployeesById(event){
     currentSortColumn = 0;
     sortTableByCol(employeeTable, currentSortColumn, direction, true);
@@ -62,10 +63,31 @@ function onPageLoad(){
     event.preventDefault();
   }
 
+  function onShopChange(event){
+    var shopFilter = event.target;
+    var selectedIndex = shopFilter.selectedIndex;
+
+    if(selectedIndex > 0) {
+
+      var selectedShop = chain.getShopById(selectedIndex);
+      console.log(selectedShop);
+
+      hideShopExcept(employeeTable, selectedShop);
+
+    } else {
+      showAllShops(employeeTable);
+    }
+
+  }
+
   chain = new Chain(); //store all the data
   chain.populate();
 
   employeeTable = document.getElementById('employeeTable');
+
+
+
+
 
   employee = chain.getEmployees();
 
@@ -73,11 +95,12 @@ function onPageLoad(){
 
   var employeeForm = document.employeeForm;
 
-  employeeForm.addEventListener('submit', onEmployeeFormSubmit, false);
+
 
 
   //fill select menu with shops
-  populateShopSelect(chain);
+  populateShopSelect('employeeShopSelect',chain);
+  populateShopSelect('shopFilter',chain);
 
   direction = [0, 0, 0, 0, 0];
   currentSortColumn = 0;
@@ -85,7 +108,7 @@ function onPageLoad(){
 
 
   /*
-  *Add 'click' event listener to sort column
+  * Event listeners
   */
   var idColLabel = document.getElementById('empID');
   idColLabel.addEventListener('click', sortEmployeesById, false);
@@ -101,6 +124,13 @@ function onPageLoad(){
 
   var ppsCol = document.getElementById('empPPS');
   ppsCol.addEventListener('click', sortEmployeesByPPS, false);
+
+  employeeForm.addEventListener('submit', onEmployeeFormSubmit, false);
+
+  var shopFilter = document.getElementById('shopFilter');
+  shopFilter.addEventListener('change', onShopChange, false);
+
+  // shopFilter.addEventListener('change',,false);
 
 } // end of onPageLoadFunction
 
@@ -118,7 +148,7 @@ function makeEmployeeTableRow(emp){
 
   tableRow = createEle('tr');
 
-  tableRow.className = "show" + " " + makeSlug(emp.getShop().getName());
+  tableRow.className = "show-row" + " " + makeSlug(emp.getShop().getName());
 
   //populate employee id row
   cell = createEle('td');
@@ -175,8 +205,8 @@ function makeSlug(val){
 }
 
 //function to populate shop select with shop id and shop name
-function populateShopSelect(c){
-  var s = document.getElementById('employeeShopSelect');
+function populateShopSelect(id, c){
+  var s = document.getElementById(id);
   var shops = c.getShops();
   for (var i = 0; i < shops.length; i++) {
     var o = new Option(shops[i].getName(),shops[i].getId());
@@ -226,6 +256,46 @@ function sortTableByCol(tableBody, colIndex, direction, isNumber) {
 
 }
 
+function showAllShops(tableBody){
+
+  var row, rows, i, classList;
+  rows = tableBody.rows;
+
+  for (i = 0; i < tableBody.rows.length; i++) {
+    row = tableBody.rows[i];
+    classList = row.className;
+    console.log(classList);
+
+    if (classList.indexOf('show-row') === -1) {
+      row.className = classList.replace('hide-row', 'show-row');
+    }
+
+  }
+
+}
+
+function hideShopExcept(tableBody, shop){
+  var rows, row, classList, i;
+  var slug = makeSlug(shop.getName());
+
+  rows = tableBody.rows;
+  for(i = 0; i < rows.length; i++) {
+    row = rows[i];
+    classList = row.className;
+    if(classList.indexOf('show-row') >= 0) {
+      row.className = classList.replace('show-row', 'hide-row');
+    }
+  }
+
+  rows = document.getElementsByClassName(slug);
+  for (i = 0; i < rows.length; i++) {
+    row = rows[i];
+    classList = row.className;
+    if(classList.indexOf('hide-row') >= 0) {
+      row.className = classList.replace('hide-row', 'show-row');
+    }
+  };
+}
 /*
   onWindowLoad display table
 */
